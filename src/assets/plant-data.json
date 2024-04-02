@@ -1,0 +1,86 @@
+[
+  {
+    "name": "Cactus",
+    "image": "images/plant_images/cactus.jpeg",
+    "region": "Desert",
+    "difficulty": "Easy",
+    "price": 10
+  },
+  {
+    "name": "Lavender",
+    "image": "images/plant_images/lavender.jpg",
+    "region": "Temperate",
+    "difficulty": "Medium",
+    "price": 7
+  },
+  {
+    "name": "Rose",
+    "image": "images/plant_images/rose.jpeg",
+    "region": "Temperate",
+    "difficulty": "Medium",
+    "price": 7
+  },
+  {
+    "name": "Bamboo",
+    "image": "images/plant_images/bamboo.jpeg",
+    "region": "Tropical",
+    "difficulty": "Easy",
+    "price": 12
+  },
+  {
+    "name": "Pine tree",
+    "image": "images/plant_images/pine-tree.jpeg",
+    "region": "Cool",
+    "difficulty": "Hard",
+    "price": 20
+  },
+  {
+    "name": "Magnolia",
+    "image": "images/plant_images/magnolia.jpeg",
+    "region": "Tropical",
+    "difficulty": "Medium",
+    "price": 10
+  },
+  {
+    "name": "Fern",
+    "image": "images/plant_images/fern.jpeg",
+    "region": "Tropical",
+    "difficulty": "Easy",
+    "price": 6
+  },
+  {
+    "name": "Hibiscus",
+    "image": "images/plant_images/hibiscus.jpeg",
+    "region": "Tropical",
+    "difficulty": "Medium",
+    "price": 10
+  },
+  {
+    "name": "Aloe",
+    "image": "images/plant_images/aloe.jpeg",
+    "region": "Desert",
+    "difficulty": "Easy",
+    "price": 11
+  },
+  {
+    "name": "Basil",
+    "image": "images/plant_images/basil.jpeg",
+    "region": "Tropical",
+    "difficulty": "Medium",
+    "price": 8
+  },
+  {
+    "name": "Bluegrass",
+    "image": "images/plant_images/bluegrass.jpeg",
+    "region": "Temperate",
+    "difficulty": "Hard",
+    "price": 7
+  },
+  {
+    "name": "Moss",
+    "image": "images/plant_images/moss.png",
+    "region": "Temperate",
+    "difficulty": "Hard",
+    "price": 7
+  }
+]

@@ -1,38 +1,87 @@
 .App {
   text-align: center;
+  background-color: #e4f3e4;
+  width: 100vw;
+  padding: 0px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h1 {
+  font-family: Cochin;
+  font-size: 70px;
+  margin: 0px;
+  padding: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+h2 {
+  font-family: Cochin;
+  font-size: 30px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+p {
+  font-family: Cochin;
+  font-size: 22px;
+}
+
+#header {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: #a3c2aa;
+}
+
+#icon {
+  /* width: 5%; */
+  height: 90px;
+  padding: 20px;
+}
+
+#body {
+  display: flex;
+  flex-direction: row;
+}
+
+#inventory {
+  width: 73%;
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  column-gap: 20px;
+  row-gap: 20px;
+}
+
+#cart {
+  width: 27%;
+  background-color: white;
+  text-align: left;
+  padding: 20px;
+  /* height: 100vh; */
+}
+
+#plant-image {
+  height: 225px;
+}
+
+.PlantItem {
+  background-color: white;
+  height: 525px;
+  width: 27%;
+}
+
+.add-button {
+  width: 30%;
+  height: 9%;
+  font-size: 15px;
+}
+
+.cart-item {
+  display: flex;
+  display: row;
+  height: 40px;
+  column-gap: 10px;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.cart-button {
+  /* height: 10px; */
 }
