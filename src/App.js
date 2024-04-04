@@ -11,6 +11,10 @@ let idxtoitem = {};
 plantData.forEach((item, index) => {
   idxtoitem[index] = item.name;
 });
+let itemtoidx = {};
+plantData.forEach((item, index) => {
+  itemtoidx[item.name] = index;
+});
 
 function App() {
   const [cartPrice, setCartPrice] = useState(0);
@@ -20,37 +24,71 @@ function App() {
   const [climateFilter, setClimateFilter] = useState("No Filter");
   const [difficultyFilter, setDifficultyFilter] = useState("No Filter");
 
-  // function addToCart(price, index) {
-  //   console.log("added");
-  //   setCartPrice(cartPrice + price);
-  //   setCartContents(
-  //     cartContents.map((value, idx) => {
-  //       if (idx == index) {
-  //         return value + 1;
-  //       } else {
-  //         return value;
-  //       }
-  //     })
-  //   );
-  // }
-
   function displayCart() {
-    return cartContents
-      .map((amount, index) => {
-        if (amount > 0){
-          return (
-            <div className="cart-item">
-              <p>{amount}x </p>
-              <p>{idxtoitem[index]}</p>
-            </div>
-          )
-        }
-      })
+    return cartContents.map((amount, index) => {
+      if (amount > 0) {
+        return (
+          <div className="cart-item">
+            <p>{amount}x </p>
+            <p>{idxtoitem[index]}</p>
+          </div>
+        );
+      }
+    });
   }
 
-  function resetCart() {
+  function sortAlphabetical(plant1, plant2) {
+    if (plant1.name < plant2.name) {
+      return -1;
+    } else {
+      return 1;
+    }
+  }
+
+  function sortPrice(plant1, plant2) {
+    if (plant1.price < plant2.price) {
+      return -1;
+    } else {
+      return 1;
+    }
+  }
+
+  function displayPlants() {
+    let myPlants = plantData;
+
+    if (sort === "Alphabetical") {
+      myPlants = myPlants.toSorted(sortAlphabetical);
+    } else if (sort === "Price") {
+      myPlants = myPlants.toSorted(sortPrice);
+    }
+
+    return myPlants.map((item) => (
+      <PlantItem
+        name={item.name}
+        image={item.image}
+        region={item.region}
+        difficulty={item.difficulty}
+        price={item.price}
+        totalPrice={cartPrice}
+        setPrice={setCartPrice}
+        cart={cartContents}
+        setCart={setCartContents}
+        index={itemtoidx[item.name]}
+        climateFilter={climateFilter}
+        difficultyFilter={difficultyFilter}
+      />
+    ));
+  }
+
+  function reset() {
     setCartPrice(0);
     setCartContents(emptyCart);
+    document.getElementById("climate-filter").value = "No Filter";
+    setClimateFilter("No Filter");
+    document.getElementById("difficulty-filter").value = "No Filter";
+    setDifficultyFilter("No Filter");
+    document.getElementById("sorting").value = "Default";
+    setSort("Default");
   }
 
   function changeClimateFilter() {
@@ -59,8 +97,13 @@ function App() {
   }
 
   function changeDifficultyFilter() {
-    var difficulty = document.getElementById("difficulty-filter")
-    setDifficultyFilter(difficulty.value)
+    var difficulty = document.getElementById("difficulty-filter");
+    setDifficultyFilter(difficulty.value);
+  }
+
+  function changeSort() {
+    var sort = document.getElementById("sorting");
+    setSort(sort.value);
   }
 
   return (
@@ -74,12 +117,10 @@ function App() {
         <div id="inventory">
           <div id="actions">
             <h3>Sort:</h3>
-            <select id="sort">
-              <option>Default</option>
-              <option>Alphabetical (A to Z)</option>
-              <option>Price (low to high)</option>
-              <option>Price (high to low)</option>
-              <option>Difficulty</option>
+            <select id="sorting" onChange={changeSort}>
+              <option value="Default">Default</option>
+              <option value="Alphabetical">Alphabetical</option>
+              <option value="Price">Price</option>
             </select>
             <h3>Filters:</h3>
             <div id="filter-option">
@@ -102,24 +143,7 @@ function App() {
               </select>
             </div>
           </div>
-          <div id="plants">
-            {plantData.map((item, index) => (
-              <PlantItem
-                name={item.name}
-                image={item.image}
-                region={item.region}
-                difficulty={item.difficulty}
-                price={item.price}
-                totalPrice={cartPrice}
-                setPrice={setCartPrice}
-                cart={cartContents}
-                setCart={setCartContents}
-                index={index}
-                climateFilter={climateFilter}
-                difficultyFilter={difficultyFilter}
-              />
-            ))}
-          </div>
+          <div id="plants">{displayPlants()}</div>
         </div>
         <div id="cart">
           <p>
@@ -129,39 +153,11 @@ function App() {
           <p>
             <b>Total:</b> ${cartPrice}
           </p>
-          <button onClick={resetCart}>Clear cart</button>
+          <button onClick={reset}>Reset!</button>
         </div>
       </div>
     </div>
   );
 }
-
-// function addToCart(addToCart, cart){
-//   setPrice(totalPrice + price);
-//   setCart(
-//     cart.map((value, idx) => {
-//       if (idx == index) {
-//         return value + 1;
-//       } else {
-//         return value;
-//       }
-//     })
-//   );
-// }
-
-// function displayCart(addToCart, cart) {
-//   const filteredCart = cart.filter((amount) => amount > 0);
-
-//   return filteredCart.map((amount, index) => (
-//     <div className="cart-item">
-//       <button className="cart-button" onClick={addToCart(2, index)}>
-//         +
-//       </button>
-//       <p> {amount} </p>
-//       <button className="cart-button">-</button>
-//       <p>{idxtoitem[index]}</p>
-//     </div>
-//   ));
-// }
 
 export default App;
